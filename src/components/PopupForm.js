@@ -10,21 +10,12 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
   const [playerSix, setPlayerSix] = React.useState("");
 
   function loadPlayers() {
-    let playersIn = [
-      playerOne,
-      playerTwo,
-      playerThree,
-      playerFour,
-      playerFive,
-      playerSix
-    ];
+    let playersIn = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix];
 
     let playersOut = [];
 
     while (playersIn.length > 0) {
-      playersOut.push(
-        playersIn.splice(Math.floor(Math.random() * playersIn.length), 1)
-      );
+      playersOut.push(playersIn.splice(Math.floor(Math.random() * playersIn.length), 1));
     }
 
     setPlayers(playersOut);
@@ -36,8 +27,8 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
       style={{
         position: "absolute",
         background: "rgba(0,0,0,0.5)",
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         top: 0,
         left: 0,
         display: open ? "flex" : "none",
@@ -59,9 +50,7 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
           alignItems: "center"
         }}
       >
-        <div style={{ fontSize: "28px", fontWeight: "bold" }}>
-          Input Player Names
-        </div>
+        <div style={{ fontSize: "28px", fontWeight: "bold" }}>Input Player Names</div>
         <div
           style={{
             display: "flex",
