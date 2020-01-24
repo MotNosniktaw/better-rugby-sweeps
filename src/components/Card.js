@@ -7,6 +7,7 @@ export default function Card({ children }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        width: "350px",
         flexGrow: "1",
         justifyContent: "space-around"
       }}
