@@ -29,13 +29,11 @@ export default function Match({ details, home, away, homePlayer, awayPlayer }) {
         <Card>
           <Team team={home.name} />
           <Flag flag={home.flag} />
-
           <Player>{homePlayer}</Player>
         </Card>
         <Card>
           <Team team={away.name} />
           <Flag flag={away.flag} />
-
           <Player>{awayPlayer}</Player>
         </Card>
       </div>
