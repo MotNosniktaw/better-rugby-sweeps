@@ -9,7 +9,8 @@ export default function Card({ children }) {
         alignItems: "center",
         width: "350px",
         flexGrow: "1",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        position: "relative"
       }}
     >
       {children}

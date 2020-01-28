@@ -11,48 +11,48 @@ namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountriesController : ControllerBase
+    public class MatchesController : ControllerBase
     {
         private readonly Context _context;
 
-        public CountriesController(Context context)
+        public MatchesController(Context context)
         {
             _context = context;
         }
 
-        // GET: api/Countries
+        // GET: api/Matches
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
+        public async Task<ActionResult<IEnumerable<Match>>> GetMatch()
         {
-            return await _context.Countries.ToListAsync();
+            return await _context.Match.ToListAsync();
         }
 
-        // GET: api/Countries/5
+        // GET: api/Matches/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Country>> GetCountry(int id)
+        public async Task<ActionResult<Match>> GetMatch(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
+            var match = await _context.Match.FindAsync(id);
 
-            if (country == null)
+            if (match == null)
             {
                 return NotFound();
             }
 
-            return country;
+            return match;
         }
 
-        // PUT: api/Countries/5
+        // PUT: api/Matches/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCountry(int id, Country country)
+        public async Task<IActionResult> PutMatch(int id, Match match)
         {
-            if (id != country.Id)
+            if (id != match.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(country).State = EntityState.Modified;
+            _context.Entry(match).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!MatchExists(id))
                 {
                     return NotFound();
                 }
@@ -73,43 +73,37 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Countries
+        // POST: api/Matches
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(List<Country> countries)
+        public async Task<ActionResult<Match>> PostMatch(Match match)
         {
-            var output = new List<Country>();
-
-            foreach (Country country in countries)
-            {
-                _context.Countries.Add(country);
-                output.Add(country);
-            }
+            _context.Match.Add(match);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCountry), output);
+            return CreatedAtAction("GetMatch", new { id = match.Id }, match);
         }
 
-        // DELETE: api/Countries/5
+        // DELETE: api/Matches/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Country>> DeleteCountry(int id)
+        public async Task<ActionResult<Match>> DeleteMatch(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
-            if (country == null)
+            var match = await _context.Match.FindAsync(id);
+            if (match == null)
             {
                 return NotFound();
             }
 
-            _context.Countries.Remove(country);
+            _context.Match.Remove(match);
             await _context.SaveChangesAsync();
 
-            return country;
+            return match;
         }
 
-        private bool CountryExists(int id)
+        private bool MatchExists(int id)
         {
-            return _context.Countries.Any(e => e.Id == id);
+            return _context.Match.Any(e => e.Id == id);
         }
     }
 }

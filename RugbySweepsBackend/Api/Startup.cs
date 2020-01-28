@@ -50,6 +50,13 @@ namespace Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithOrigins(
+                    "http://localhost:3000"));
         }
     }
 }
