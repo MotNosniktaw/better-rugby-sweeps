@@ -55,6 +55,43 @@ function App() {
     }
   ];
 
+  function handleSubmit() {
+    const data = [
+      {
+        WeekNumber: 1,
+        HomeTeam: countryOne,
+        HomePlayer: players[0],
+        AwayTeam: countryTwo,
+        AwayPlayer: players[1],
+        Kickoff: new Date()
+      },
+      {
+        WeekNumber: 1,
+        HomeTeam: countryThree,
+        HomePlayer: players[2],
+        AwayTeam: countryFour,
+        AwayPlayer: players[3],
+        Kickoff: new Date()
+      },
+      {
+        WeekNumber: 1,
+        HomeTeam: countryFive,
+        HomePlayer: players[4],
+        AwayTeam: countrySix,
+        AwayPlayer: players[5],
+        Kickoff: new Date()
+      }
+    ];
+    fetch("https://localhost:5001/api/Matches", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(res => console.log(res));
+  }
+
   return (
     <Background>
       <Title>Six Nations Weekly Beer Sweeps - Giovanni Edition!</Title>
@@ -90,7 +127,18 @@ function App() {
           awayPlayer={players[5]}
         />
         <FrontButton open={() => setDialogOpen(true)}>LET'S PARTY MOTHERFUCKERS!!!!!</FrontButton>
-        {sendButton ? <SendButton open={sendButton}>COME ON!!!!!! EVERYONE IS READY NOW!!!!</SendButton> : ""}
+        {sendButton ? (
+          <SendButton
+            onClick={() => {
+              console.log("FAAARRT");
+              handleSubmit();
+            }}
+          >
+            COME ON!!!!!! EVERYONE IS READY NOW!!!!
+          </SendButton>
+        ) : (
+          ""
+        )}
       </MainSection>
       <PopupForm open={dialogOpen} setOpen={setDialogOpen} setPlayers={setPlayers} />
     </Background>

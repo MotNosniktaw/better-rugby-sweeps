@@ -77,12 +77,17 @@ namespace Api.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Match>> PostMatch(Match match)
+        public async Task<ActionResult<Match>> PostMatch(List<Match> matches)
         {
+            var output = new List<Match>();
+
+            foreach(Match match in matches)
+            {
             _context.Match.Add(match);
+            }
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMatch", new { id = match.Id }, match);
+            return CreatedAtAction("GetMatch", output);
         }
 
         // DELETE: api/Matches/5

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FrontButton({ children }) {
+export default function FrontButton({ children, onClick }) {
   return (
     <div
       style={{
@@ -13,6 +13,7 @@ export default function FrontButton({ children }) {
         fontWeight: "bold",
         padding: "6px"
       }}
+      onClick={onClick}
     >
       {children}
     </div>

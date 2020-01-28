@@ -13,6 +13,6 @@ namespace Api.Models
         public Country AwayTeam { get; set; }
         public string AwayPlayer { get; set; }
         public DateTime Kickoff { get; set; }
-        public Result Result { get; set; }
+        public Result? Result { get; set; }
     }
 }

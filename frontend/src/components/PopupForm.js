@@ -15,7 +15,7 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
     let playersOut = [];
 
     while (playersIn.length > 0) {
-      playersOut.push(playersIn.splice(Math.floor(Math.random() * playersIn.length), 1));
+      playersOut.push(playersIn.splice(Math.floor(Math.random() * playersIn.length), 1)[0]);
     }
 
     setPlayers(playersOut);
