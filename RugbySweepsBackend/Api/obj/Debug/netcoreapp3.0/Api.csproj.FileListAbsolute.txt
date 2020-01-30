@@ -123,6 +123,6 @@ C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\bin\Debug\netco
 C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\bin\Debug\netcoreapp3.0\Api.runtimeconfig.dev.json
 C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\bin\Debug\netcoreapp3.0\Api.dll
 C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\bin\Debug\netcoreapp3.0\Api.pdb
-C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\obj\Debug\netcoreapp3.0\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\obj\Debug\netcoreapp3.0\Api.dll
 C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\obj\Debug\netcoreapp3.0\Api.pdb
+C:\Users\Tom\Projects\better-rugby-sweeps\RugbySweepsBackend\Api\obj\Debug\netcoreapp3.0\Api.MvcApplicationPartsAssemblyInfo.cache

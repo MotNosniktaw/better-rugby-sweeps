@@ -11,6 +11,7 @@ import SendButton from "./components/SendButton";
 function App() {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [players, setPlayers] = React.useState([]);
+  // const [countries, setCountries] = React.useState([]);
   const [countryOne, setCountryOne] = React.useState("");
   const [countryTwo, setCountryTwo] = React.useState("");
   const [countryThree, setCountryThree] = React.useState("");
@@ -21,7 +22,12 @@ function App() {
   // const sendButton = players.length === 6 && countryOne !== "" && countryTwo !== "" && countryThree !== "" && countryFour !== "" && countryFive !== "" && countrySix !== "";
   const sendButton = true;
 
-  // const countries = fetch("https://localhost:5001/api/countries", { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } });
+  // const res = fetch("https://localhost:5000/api/countries", {
+  //   method: "GET",
+  //   headers: { Accept: "application/json", "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+  // })
+  //   .then(r => console.log(r))
+  //   .catch(err => console.log(err));
   const countries = [
     {
       id: 1,
@@ -82,10 +88,12 @@ function App() {
         Kickoff: new Date()
       }
     ];
-    fetch("https://localhost:5001/api/Matches", {
+
+    fetch("https://localhost:5000/api/Matches", {
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       method: "POST",
       body: JSON.stringify(data)
