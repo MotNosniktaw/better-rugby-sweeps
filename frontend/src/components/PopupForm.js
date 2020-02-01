@@ -1,5 +1,7 @@
 import React from "react";
 import PlayerInput from "./PlayerInput";
+import drumWAV from "../drumRoll.wav";
+import drumGIF from "../drumRoll.gif";
 
 export default function PopupForm({ open, setOpen, setPlayers }) {
   const [playerOne, setPlayerOne] = React.useState("");
@@ -8,6 +10,7 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
   const [playerFour, setPlayerFour] = React.useState("");
   const [playerFive, setPlayerFive] = React.useState("");
   const [playerSix, setPlayerSix] = React.useState("");
+  const [drumRoll, setDrumRoll] = React.useState(false);
 
   function loadPlayers() {
     let playersIn = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix];
@@ -18,8 +21,12 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
       playersOut.push(playersIn.splice(Math.floor(Math.random() * playersIn.length), 1)[0]);
     }
 
-    setPlayers(playersOut);
-    setOpen(false);
+    setDrumRoll(true);
+    setTimeout(() => {
+      setPlayers(playersOut);
+      setDrumRoll(false);
+      setOpen(false);
+    }, 6000);
   }
 
   return (
@@ -50,74 +57,85 @@ export default function PopupForm({ open, setOpen, setPlayers }) {
           alignItems: "center"
         }}
       >
-        <div style={{ fontSize: "28px", fontWeight: "bold" }}>Input Player Names</div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between"
-          }}
-        >
-          <PlayerInput setPlayer={setPlayerOne} player={playerOne}>
-            Player 1
-          </PlayerInput>
-          <PlayerInput setPlayer={setPlayerTwo} player={playerTwo}>
-            Player 2
-          </PlayerInput>
-          <PlayerInput setPlayer={setPlayerThree} player={playerThree}>
-            Player 3
-          </PlayerInput>
-          <PlayerInput setPlayer={setPlayerFour} player={playerFour}>
-            Player 4
-          </PlayerInput>
-          <PlayerInput setPlayer={setPlayerFive} player={playerFive}>
-            Player 5
-          </PlayerInput>
-          <PlayerInput setPlayer={setPlayerSix} player={playerSix}>
-            Player 6
-          </PlayerInput>
-        </div>
-        <div
-          style={{
-            width: "100%",
-            height: "80px",
-            display: "flex",
-            justifyContent: "space-around"
-          }}
-        >
-          <div
-            style={{
-              width: "250px",
-              height: "60px",
-              border: "2px solid orange",
-              background: "#EEBB88",
-              borderRadius: "8px",
-              textAlign: "center",
-              fontSize: "24px",
-              fontWeight: "bold",
-              margin: "8px"
-            }}
-            onClick={() => loadPlayers()}
-          >
-            Let's do this!!!
-          </div>
-          <div
-            style={{
-              width: "250px",
-              height: "60px",
-              border: "2px solid orange",
-              background: "#EE9966",
-              borderRadius: "8px",
-              textAlign: "center",
-              fontSize: "24px",
-              fontWeight: "bold",
-              margin: "8px"
-            }}
-            onClick={() => setOpen(false)}
-          >
-            Cancel
-          </div>
-        </div>
+        {drumRoll ? (
+          <>
+            <audio autoPlay>
+              <source src={drumWAV} type="audio/wav" />
+            </audio>
+            <img src={drumGIF} />
+          </>
+        ) : (
+          <>
+            <div style={{ fontSize: "28px", fontWeight: "bold" }}>Input Player Names</div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between"
+              }}
+            >
+              <PlayerInput setPlayer={setPlayerOne} player={playerOne}>
+                Player 1
+              </PlayerInput>
+              <PlayerInput setPlayer={setPlayerTwo} player={playerTwo}>
+                Player 2
+              </PlayerInput>
+              <PlayerInput setPlayer={setPlayerThree} player={playerThree}>
+                Player 3
+              </PlayerInput>
+              <PlayerInput setPlayer={setPlayerFour} player={playerFour}>
+                Player 4
+              </PlayerInput>
+              <PlayerInput setPlayer={setPlayerFive} player={playerFive}>
+                Player 5
+              </PlayerInput>
+              <PlayerInput setPlayer={setPlayerSix} player={playerSix}>
+                Player 6
+              </PlayerInput>
+            </div>
+            <div
+              style={{
+                width: "100%",
+                height: "80px",
+                display: "flex",
+                justifyContent: "space-around"
+              }}
+            >
+              <div
+                style={{
+                  width: "250px",
+                  height: "60px",
+                  border: "2px solid orange",
+                  background: "#EEBB88",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  margin: "8px"
+                }}
+                onClick={() => loadPlayers()}
+              >
+                Let's do this!!!
+              </div>
+              <div
+                style={{
+                  width: "250px",
+                  height: "60px",
+                  border: "2px solid orange",
+                  background: "#EE9966",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  margin: "8px"
+                }}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
