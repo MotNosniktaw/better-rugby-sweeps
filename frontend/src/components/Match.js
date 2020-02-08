@@ -5,7 +5,7 @@ import Flag from "./Flag";
 import Player from "./Player";
 import CountryPicker from "./CountryPicker";
 
-export default function Match({ countries, details, home, setHome, away, setAway, homePlayer, awayPlayer }) {
+export default function Match({ details, home, setHome, away, setAway, homePlayer, awayPlayer }) {
   return (
     <div
       style={{
@@ -29,7 +29,7 @@ export default function Match({ countries, details, home, setHome, away, setAway
       >
         <Card>
           {home === "" ? (
-            <CountryPicker countries={countries} setCountry={setHome} />
+            <CountryPicker setCountry={setHome} />
           ) : (
             <>
               <Team team={home.name} />
@@ -40,7 +40,7 @@ export default function Match({ countries, details, home, setHome, away, setAway
         </Card>
         <Card>
           {away === "" ? (
-            <CountryPicker countries={countries} setCountry={setAway} />
+            <CountryPicker setCountry={setAway} />
           ) : (
             <>
               <Team team={away.name} />
