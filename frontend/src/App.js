@@ -20,7 +20,7 @@ function App() {
   const [countryFour, setCountryFour] = React.useState("");
   const [countryFive, setCountryFive] = React.useState("");
   const [countrySix, setCountrySix] = React.useState("");
-  const [weekNumber, setWeekNumber] = React.useState(1);
+  const [weekNumber, setWeekNumber] = React.useState(localStorage.getItem("weekNumber") || 1);
 
   const countries = [countryOne, countryTwo, countryThree, countryFour, countryFive, countrySix];
 
@@ -31,16 +31,6 @@ function App() {
 
   const inputValid = playersValid && playersUnique && countriesValid && countriesUnique;
 
-  function checkPlayerUnique(player) {
-    var check = players.filter(i => i === player);
-    return check.length === 1;
-  }
-
-  function checkCountryUnique(country) {
-    var check = countries.filter(i => i.name === country.name);
-    return check.length === 1;
-  }
-
   React.useEffect(() => {
     async function getMatches() {
       fetch(`http://localhost:3005/matches/${weekNumber}`).then(async r => {
@@ -50,6 +40,16 @@ function App() {
     }
     getMatches();
   }, [weekNumber]);
+
+  function checkPlayerUnique(player) {
+    var check = players.filter(i => i === player);
+    return check.length === 1;
+  }
+
+  function checkCountryUnique(country) {
+    var check = countries.filter(i => i.name === country.name);
+    return check.length === 1;
+  }
 
   function handleSubmit() {
     const data = [
@@ -88,6 +88,10 @@ function App() {
     });
   }
 
+  function update() {
+    alert("i tried to update");
+  }
+
   return (
     <Background>
       <Title>Six Nations Weekly Beer Sweeps - Giovanni Edition!</Title>
@@ -97,7 +101,17 @@ function App() {
           matches.map(m => {
             return (
               <>
-                <PickedMatch key={m._id} details={m.Kickoff} home={m.HomeTeam} away={m.AwayTeam} homePlayer={m.HomePlayer} awayPlayer={m.AwayPlayer}></PickedMatch>
+                <PickedMatch
+                  callback={() => update()}
+                  key={m._id}
+                  matchId={m._id}
+                  winner={m.Winner}
+                  details={m.Kickoff}
+                  home={m.HomeTeam}
+                  away={m.AwayTeam}
+                  homePlayer={m.HomePlayer}
+                  awayPlayer={m.AwayPlayer}
+                ></PickedMatch>
               </>
             );
             // return <Match details={m} home={countryOne} setHome={setCountryOne} away={countryTwo} setAway={setCountryTwo} homePlayer={players[0]} awayPlayer={players[1]} />;

@@ -58,7 +58,7 @@ app.put("/matches/result", (req, res) => {
   console.log(req.body);
   var objectId = new ObjectId(req.body._id);
   db.collection("matches").updateOne({ _id: objectId }, { $set: { Winner: req.body.Winner } });
-  res.redirect("/");
+  res.send("all goodio");
 });
 
 app.get("/matches/:week", (req, res) => {

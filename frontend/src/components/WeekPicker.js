@@ -19,7 +19,10 @@ export default function WeekPicker({ weekNumber, setWeekNumber }) {
             background: "rgba(255, 255,255, 0.4)",
             padding: "8px"
           }}
-          onClick={() => setWeekNumber(1)}
+          onClick={() => {
+            setWeekNumber(1);
+            localStorage.setItem("weekNumber", 1);
+          }}
         >
           1
         </div>
@@ -29,7 +32,10 @@ export default function WeekPicker({ weekNumber, setWeekNumber }) {
             background: "rgba(255, 255,255, 0.4)",
             padding: "8px"
           }}
-          onClick={() => setWeekNumber(2)}
+          onClick={() => {
+            setWeekNumber(2);
+            localStorage.setItem("weekNumber", 2);
+          }}
         >
           2
         </div>
@@ -39,7 +45,10 @@ export default function WeekPicker({ weekNumber, setWeekNumber }) {
             background: "rgba(255, 255,255, 0.4)",
             padding: "8px"
           }}
-          onClick={() => setWeekNumber(3)}
+          onClick={() => {
+            setWeekNumber(3);
+            localStorage.setItem("weekNumber", 3);
+          }}
         >
           3
         </div>
@@ -49,7 +58,10 @@ export default function WeekPicker({ weekNumber, setWeekNumber }) {
             background: "rgba(255, 255,255, 0.4)",
             padding: "8px"
           }}
-          onClick={() => setWeekNumber(4)}
+          onClick={() => {
+            setWeekNumber(4);
+            localStorage.setItem("weekNumber", 4);
+          }}
         >
           4
         </div>
@@ -59,7 +71,10 @@ export default function WeekPicker({ weekNumber, setWeekNumber }) {
             background: "rgba(255, 255,255, 0.4)",
             padding: "8px"
           }}
-          onClick={() => setWeekNumber(5)}
+          onClick={() => {
+            setWeekNumber(5);
+            localStorage.setItem("weekNumber", 5);
+          }}
         >
           5
         </div>

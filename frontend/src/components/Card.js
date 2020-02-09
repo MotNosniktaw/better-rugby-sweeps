@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ children }) {
+export default function Card({ children, onClick }) {
   return (
     <div
       style={{
@@ -12,6 +12,7 @@ export default function Card({ children }) {
         justifyContent: "space-around",
         position: "relative"
       }}
+      onClick={onClick}
     >
       {children}
     </div>

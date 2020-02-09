@@ -3,8 +3,10 @@ import Card from "./Card";
 import Team from "./Team";
 import Flag from "./Flag";
 import Player from "./Player";
+import beer from "../beer.jpg";
+import sad from "../sadLukins.jpeg";
 
-export default function Match({ details, home, away, homePlayer, awayPlayer }) {
+export default function Match({ callback, matchId, details, home, away, homePlayer, awayPlayer, winner }) {
   const [homeFlag, setHomeFlag] = React.useState("");
   const [awayFlag, setAwayFlag] = React.useState("");
 
@@ -21,6 +23,23 @@ export default function Match({ details, home, away, homePlayer, awayPlayer }) {
     }
     getFlags();
   }, [away, home]);
+
+  async function sendResults(result) {
+    if (!winner) {
+      fetch("http://localhost:3005/matches/result", {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ _id: matchId, Winner: result })
+      });
+    }
+
+    window.location.reload();
+    return false;
+  }
+
   return (
     <div
       style={{
@@ -42,15 +61,27 @@ export default function Match({ details, home, away, homePlayer, awayPlayer }) {
           flexGrow: "5"
         }}
       >
-        <Card>
+        <Card onClick={() => sendResults("home")}>
           <Team team={home} />
           <Flag flag={homeFlag} />
           <Player>{homePlayer}</Player>
+          {winner &&
+            (winner === "home" ? (
+              <img src={beer} style={{ position: "absolute", width: "100px", transform: "rotate(30deg)" }} />
+            ) : (
+              <img src={sad} style={{ position: "absolute", width: "120px", transform: "rotate(-30deg)" }} />
+            ))}
         </Card>
-        <Card>
+        <Card onClick={() => sendResults("away")}>
           <Team team={away} />
           <Flag flag={awayFlag} />
           <Player>{awayPlayer}</Player>
+          {winner &&
+            (winner === "away" ? (
+              <img src={beer} style={{ position: "absolute", width: "100px", transform: "rotate(30deg)" }} />
+            ) : (
+              <img src={sad} style={{ position: "absolute", width: "120px", transform: "rotate(-30deg)" }} />
+            ))}
         </Card>
       </div>
       <div style={{ flexGrow: "1" }}>{details}</div>
