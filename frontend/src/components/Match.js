@@ -4,8 +4,11 @@ import Team from "./Team";
 import Flag from "./Flag";
 import Player from "./Player";
 import CountryPicker from "./CountryPicker";
+import { DateTime } from "luxon";
 
 export default function Match({ details, home, setHome, away, setAway, homePlayer, awayPlayer }) {
+  const dt = new DateTime.fromISO(details).toLocaleString(DateTime.DATETIME_FULL);
+
   return (
     <div
       style={{
@@ -50,7 +53,7 @@ export default function Match({ details, home, setHome, away, setAway, homePlaye
           <Player>{awayPlayer}</Player>
         </Card>
       </div>
-      <div style={{ flexGrow: "1" }}>{details}</div>
+      <div style={{ flexGrow: "1" }}>{dt}</div>
     </div>
   );
 }

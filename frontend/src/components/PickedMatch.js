@@ -5,10 +5,13 @@ import Flag from "./Flag";
 import Player from "./Player";
 import beer from "../beer.jpg";
 import sad from "../sadLukins.jpeg";
+import { DateTime } from "luxon";
 
-export default function Match({ callback, matchId, details, home, away, homePlayer, awayPlayer, winner }) {
+export default function Match({ matchId, details, home, away, homePlayer, awayPlayer, winner }) {
   const [homeFlag, setHomeFlag] = React.useState("");
   const [awayFlag, setAwayFlag] = React.useState("");
+
+  const dt = new DateTime.fromISO(details).toLocaleString(DateTime.DATETIME_FULL);
 
   React.useEffect(() => {
     async function getFlags() {
@@ -84,7 +87,7 @@ export default function Match({ callback, matchId, details, home, away, homePlay
             ))}
         </Card>
       </div>
-      <div style={{ flexGrow: "1" }}>{details}</div>
+      <div style={{ flexGrow: "1" }}>{dt}</div>
     </div>
   );
 }
