@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const ObjectId = require("mongodb").ObjectId;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
@@ -51,6 +52,12 @@ app.get("/matches", (req, res) => {
 app.post("/matches", (req, res) => {
   console.log(req.body);
   db.collection("matches").insertMany(req.body);
+  res.redirect("/");
+});
+app.put("/matches/result", (req, res) => {
+  console.log(req.body);
+  var objectId = new ObjectId(req.body._id);
+  db.collection("matches").updateOne({ _id: objectId }, { $set: { Winner: req.body.Winner } });
   res.redirect("/");
 });
 
