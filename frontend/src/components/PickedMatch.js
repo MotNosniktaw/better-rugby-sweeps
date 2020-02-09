@@ -12,12 +12,10 @@ export default function Match({ details, home, away, homePlayer, awayPlayer }) {
     async function getFlags() {
       fetch(`http://localhost:3005/flag/${home}`).then(async r => {
         const res = await r.json();
-        console.log(res);
         setHomeFlag(res[0].flag);
       });
       fetch(`http://localhost:3005/flag/${away}`).then(async r => {
         const res = await r.json();
-        console.log(res);
         setAwayFlag(res[0].flag);
       });
     }

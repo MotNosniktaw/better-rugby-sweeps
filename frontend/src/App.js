@@ -33,13 +33,11 @@ function App() {
 
   function checkPlayerUnique(player) {
     var check = players.filter(i => i === player);
-    console.log(check);
     return check.length === 1;
   }
 
   function checkCountryUnique(country) {
     var check = countries.filter(i => i.name === country.name);
-    console.log(check);
     return check.length === 1;
   }
 
@@ -47,7 +45,6 @@ function App() {
     async function getMatches() {
       fetch(`http://localhost:3005/matches/${weekNumber}`).then(async r => {
         const res = await r.json();
-        console.log(res);
         setMatches(res);
       });
     }
