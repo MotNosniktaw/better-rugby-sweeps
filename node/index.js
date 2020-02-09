@@ -63,3 +63,13 @@ app.get("/matches/:week", (req, res) => {
       res.send(results);
     });
 });
+
+app.get("/flag/:country", (req, res) => {
+  const country = req.params.country;
+  console.log(country);
+  db.collection("countries")
+    .find({ name: country }, { flag: true })
+    .toArray(function(err, results) {
+      res.send(results);
+    });
+});
