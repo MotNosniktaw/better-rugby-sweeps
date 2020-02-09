@@ -33,6 +33,7 @@ export default function({ setCountry }) {
         {countries &&
           countries.map(country => (
             <div
+              key={country.id}
               style={{ padding: "4px", width: "90px", textAlign: "center" }}
               onClick={() => {
                 setCountry(country);

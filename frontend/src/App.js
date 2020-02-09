@@ -95,10 +95,9 @@ function App() {
         <WeekPicker weekNumber={weekNumber} setWeekNumber={setWeekNumber} />
         {matches.length > 1 ? (
           matches.map(m => {
-            console.log(m);
             return (
               <>
-                <PickedMatch details={m.Kickoff} home={m.HomeTeam} away={m.AwayTeam} homePlayer={m.HomePlayer} awayPlayer={m.AwayPlayer}></PickedMatch>
+                <PickedMatch key={m._id} details={m.Kickoff} home={m.HomeTeam} away={m.AwayTeam} homePlayer={m.HomePlayer} awayPlayer={m.AwayPlayer}></PickedMatch>
               </>
             );
             // return <Match details={m} home={countryOne} setHome={setCountryOne} away={countryTwo} setAway={setCountryTwo} homePlayer={players[0]} awayPlayer={players[1]} />;
