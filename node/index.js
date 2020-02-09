@@ -53,3 +53,13 @@ app.post("/matches", (req, res) => {
   db.collection("matches").insertMany(req.body);
   res.redirect("/");
 });
+
+app.get("/matches/:week", (req, res) => {
+  const week = req.params.week;
+  console.log(week);
+  db.collection("matches")
+    .find({ WeekNumber: parseInt(week) })
+    .toArray(function(err, results) {
+      res.send(results);
+    });
+});
