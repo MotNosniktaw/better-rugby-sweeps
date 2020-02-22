@@ -55,25 +55,25 @@ function App() {
     const data = [
       {
         WeekNumber: 1,
-        HomeTeam: countryOne,
+        HomeTeam: countryOne.name,
         HomePlayer: players[0] || "",
-        AwayTeam: countryTwo,
+        AwayTeam: countryTwo.name,
         AwayPlayer: players[1] || "",
         Kickoff: new Date()
       },
       {
         WeekNumber: 1,
-        HomeTeam: countryThree,
+        HomeTeam: countryThree.name,
         HomePlayer: players[2] || "",
-        AwayTeam: countryFour,
+        AwayTeam: countryFour.name,
         AwayPlayer: players[3] || "",
         Kickoff: new Date()
       },
       {
         WeekNumber: 1,
-        HomeTeam: countryFive,
+        HomeTeam: countryFive.name,
         HomePlayer: players[4] || "",
-        AwayTeam: countrySix,
+        AwayTeam: countrySix.name,
         AwayPlayer: players[5] || "",
         Kickoff: new Date()
       }
